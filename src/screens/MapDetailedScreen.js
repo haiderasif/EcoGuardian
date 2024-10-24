@@ -30,7 +30,7 @@ export const MapDetailedScreen = ({ route, navigation }) => {
   const handlePress = () => setExpanded(!expanded);
 
   const getNearbyNursery = () => {
-    const googleAPIKey = "AIzaSyBy9zj9lPNOZWZHenVb3uf1S1NHXgzdrJk";
+    const googleAPIKey = "";
     const placeType = "tree nursery";
     const latitude = lat;
     const longitude = lng;
