@@ -6,13 +6,6 @@ import { FirebaseContextProvider } from "./src/services/FirebaseData";
 import { LogBox } from "react-native";
 
 const InitializeFirebase = {
-  apiKey: "AIzaSyASUyZgEMXJG_QgC54HRQy4J5HuxQ7Ok8k",
-  authDomain: "ecoguardian-2c40a.firebaseapp.com",
-  databaseURL: "https://ecoguardian-2c40a-default-rtdb.firebaseio.com",
-  projectId: "ecoguardian-2c40a",
-  storageBucket: "ecoguardian-2c40a.appspot.com",
-  messagingSenderId: "1077108910126",
-  appId: "1:1077108910126:web:68cd5c0af6bc94eb1e17bf",
 };
 
 if (!getApps.length) {
