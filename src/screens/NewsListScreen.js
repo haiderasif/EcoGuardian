@@ -23,7 +23,7 @@ const NewsListScreen = ({ navigation }) => {
         params: {
           q: "Trees AND UK",
           sortBy: "publishedAt",
-          apiKey: "c4800febd1424825b525cfd3798ce670",
+          apiKey: process.env.EXPO_PUBLIC_NEWS_API_KEY,
         },
       });
       // Filter out articles with the title "Removed"

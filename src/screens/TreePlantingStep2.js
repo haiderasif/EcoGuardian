@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Text, Modal, TouchableOpacity } from "react-native";
-import { Video } from "expo-av";
+import { useVideoPlayer, VideoView } from "expo-video";
 import { Button } from "react-native-paper";
 import filling from "../../assets/filling.mp4";
 
 export const TreePlantingStep2 = ({ navigation }) => {
+  const player = useVideoPlayer(filling, (videoPlayer) => {
+    videoPlayer.volume = 1;
+  });
   return (
     <View style={styles.container}>
       <>
-        <Video
-          source={filling} // Ensure source is an object with uri
+        <VideoView
+          player={player}
           style={styles.video} // Style for the video component
-          useNativeControls // To show default video controls
-          resizeMode="contain" // Optional: to maintain aspect ratio
-          volume={1.0} // Set volume to maximum
+          nativeControls // To show default video controls
+          contentFit="contain" // Optional: to maintain aspect ratio
         />
         <Text style={styles.text}>
           This is the second part of the tree plantation process. This video

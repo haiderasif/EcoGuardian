@@ -29,6 +29,7 @@ import {
   reauthenticateWithCredential,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import { demoProfileImage } from "../config/demoImages";
 import AppButton from "../components/AppButton";
 
 import { Formik, ErrorMessage } from "formik";
@@ -97,7 +98,10 @@ function EditProfile({ navigation }) {
                 {imageUri ? (
                   <Image source={{ uri: imageUri }} style={styles.image} />
                 ) : (
-                  <Image source={{ uri: values.images }} style={styles.image} />
+                  <Image
+                    source={{ uri: demoProfileImage(values.images) }}
+                    style={styles.image}
+                  />
                 )}
                 <View style={styles.TextStyle}>
                   <TextInput

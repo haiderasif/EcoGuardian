@@ -35,7 +35,6 @@ import { useIsFocused } from "@react-navigation/native";
 import { Dropdown } from "react-native-element-dropdown";
 import { AppLoader } from "../components/AppLoader";
 import * as Notification from "expo-notifications";
-import * as Permission from "expo-permissions";
 
 const categories = [
   { label: "Public", value: "public" },
@@ -85,7 +84,7 @@ function ListingEditScreen() {
     const lng = values.longitude;
     const myLocation = values.UserLocation;
 
-    fetch("http://192.168.0.251:5000/add", {
+    fetch(`${process.env.EXPO_PUBLIC_API_BASE_URL}/add`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -173,10 +172,10 @@ function ListingEditScreen() {
   const [serverError, setServerError] = useState(false);
   const isFocused = useIsFocused();
   useEffect(() => {
-    Permission.getAsync(Permission.NOTIFICATIONS)
+    Notification.getPermissionsAsync()
       .then((response) => {
         if (response.status !== "granted") {
-          return Permission.askAsync(Permission.NOTIFICATIONS);
+          return Notification.requestPermissionsAsync();
         }
         return response;
       })

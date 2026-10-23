@@ -8,6 +8,7 @@ import {
 
 import colors from "../styles/colors";
 import AppText from "./AppText";
+import { demoListingImage } from "../config/demoImages";
 
 function ListItem({
   title,
@@ -23,7 +24,12 @@ function ListItem({
         <TouchableHighlight underlayColor={colors.light} onPress={onPress}>
           <View style={styles.container}>
             {IconComponent}
-            {image && <Image style={styles.image} source={{ uri: image }} />}
+            {image && (
+              <Image
+                style={styles.image}
+                source={{ uri: demoListingImage(image) }}
+              />
+            )}
             <View style={styles.detailsContainer}>
               <AppText style={styles.title} numberOfLines={1}>
                 {title}

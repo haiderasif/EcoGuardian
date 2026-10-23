@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import firebaseApp, { firebaseAuth } from "./firebase";
 import { getDatabase, ref, onValue, update } from "firebase/database";
 import { getAuth } from "firebase/auth";
 
@@ -8,11 +9,11 @@ export const FirebaseContextProvider = ({ children }) => {
   const [mapData, setMapData] = useState([]);
   const [listingData, setListingData] = useState([]);
   const [treesPlanted, setTreesPlanted] = useState(0); // State to store TreesPlanted value
-  const user = getAuth().currentUser;
+  const user = firebaseAuth.currentUser;
   const [userid, setUserID] = useState(null);
 
   const GetListingData = () => {
-    const db = getDatabase();
+    const db = getDatabase(firebaseApp);
     const reference = ref(db, "listing");
     onValue(reference, (snapshot) => {
       var finished = [];
@@ -30,10 +31,9 @@ export const FirebaseContextProvider = ({ children }) => {
   };
 
   const GetMapData = () => {
-    const db = getDatabase();
+    const db = getDatabase(firebaseApp);
     const reference = ref(db, "data");
-    const auth = getAuth();
-    const currentUser = auth.currentUser;
+    const currentUser = firebaseAuth.currentUser;
 
     onValue(reference, (snapshot) => {
       var finished = [];
@@ -54,7 +54,7 @@ export const FirebaseContextProvider = ({ children }) => {
   };
 
   const GetTreesPlanted = () => {
-    const db = getDatabase();
+    const db = getDatabase(firebaseApp);
     const userRef = ref(db, "User");
     onValue(userRef, (snapshot) => {
       snapshot.forEach((data) => {

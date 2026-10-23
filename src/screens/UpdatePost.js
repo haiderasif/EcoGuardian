@@ -19,6 +19,7 @@ import { getAuth } from "firebase/auth";
 import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import { MapInput } from "../components/search.component";
 import { manipulateAsync, FlipType, SaveFormat } from "expo-image-manipulator";
+import { demoListingImage } from "../config/demoImages";
 import { FirebaseContext } from "../services/FirebaseData";
 import { useIsFocused } from "@react-navigation/native";
 import { AppLoader } from "../components/AppLoader";
@@ -219,7 +220,7 @@ function UpdatePost({ route }) {
                     <Image source={{ uri: imageUri }} style={styles.image} />
                   ) : (
                     <Image
-                      source={{ uri: values.images }}
+                      source={{ uri: demoListingImage(values.images) }}
                       style={styles.image}
                     />
                   )}

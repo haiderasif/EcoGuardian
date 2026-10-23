@@ -10,6 +10,7 @@ import colors from "../styles/colors";
 import AppText from "./AppText";
 import { getDatabase, ref, onValue } from "firebase/database";
 import { useIsFocused } from "@react-navigation/native";
+import { demoListingImage, demoProfileImage } from "../config/demoImages";
 
 function ListingScreenCard({
   startDate,
@@ -57,7 +58,10 @@ function ListingScreenCard({
       <View style={styles.card}>
         <View style={styles.container}>
           {image && (
-            <Image style={styles.profileimage} source={{ uri: user.Picture }} />
+            <Image
+              style={styles.profileimage}
+              source={{ uri: demoProfileImage(user.Picture) }}
+            />
           )}
           <View style={styles.detailContainer}>
             <View>
@@ -79,7 +83,7 @@ function ListingScreenCard({
           >
             {title}
           </Text>
-          <Image source={{ uri: image }} style={styles.image} />
+          <Image source={{ uri: demoListingImage(image) }} style={styles.image} />
           {Object.keys(comments).length == 0 ? (
             <Text
               style={{

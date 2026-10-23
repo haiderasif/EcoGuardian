@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { View, Text, SafeAreaView, ScrollView, Image } from "react-native";
 import { styles } from "../styles/styles";
 import Slideshow from "react-native-image-slider-show";
+import { demoAnalysisImage } from "../config/demoImages";
 export const LocationReport = ({ route }) => {
   console.log(route.params.x.GeneratedMessage);
   return (
@@ -14,9 +15,13 @@ export const LocationReport = ({ route }) => {
               overlay={false}
               height={400}
               dataSource={[
-                { url: route.params.x.NewNDVIUrl },
                 {
-                  url: route.params.x.OldNDVIurl,
+                  title: "Current NDVI view (illustrative)",
+                  url: demoAnalysisImage("currentNdvi", route.params.x.NewNDVIUrl),
+                },
+                {
+                  title: "Historical NDVI view (illustrative)",
+                  url: demoAnalysisImage("historicalNdvi", route.params.x.OldNDVIurl),
                 },
               ]}
             />

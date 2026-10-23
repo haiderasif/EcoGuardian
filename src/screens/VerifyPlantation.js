@@ -10,7 +10,7 @@ import {
 import * as ImagePicker from "expo-image-picker";
 import * as tf from "@tensorflow/tfjs";
 import { bundleResourceIO } from "@tensorflow/tfjs-react-native";
-import * as FileSystem from "expo-file-system";
+import * as FileSystem from "expo-file-system/legacy";
 import { decodeJpeg } from "@tensorflow/tfjs-react-native";
 import LottieView from "lottie-react-native";
 import { getDatabase, ref, onValue, set, update } from "firebase/database";

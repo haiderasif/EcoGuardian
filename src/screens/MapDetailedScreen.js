@@ -12,10 +12,10 @@ import { List, Button } from "react-native-paper";
 import Slideshow from "react-native-image-slider-show";
 import getDirections from "react-native-google-maps-directions";
 import useLocation from "../services/location.service";
-import { ImageSlider } from "react-native-image-slider-banner";
 import { Chip } from "react-native-paper";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import AppButton from "../components/AppButton";
+import { demoAnalysisImage } from "../config/demoImages";
 export const MapDetailedScreen = ({ route, navigation }) => {
   const scrollView = useRef();
   const location = useLocation();
@@ -30,7 +30,7 @@ export const MapDetailedScreen = ({ route, navigation }) => {
   const handlePress = () => setExpanded(!expanded);
 
   const getNearbyNursery = () => {
-    const googleAPIKey = "";
+    const googleAPIKey = process.env.EXPO_PUBLIC_GOOGLE_PLACES_API_KEY;
     const placeType = "tree nursery";
     const latitude = lat;
     const longitude = lng;
@@ -127,15 +127,21 @@ export const MapDetailedScreen = ({ route, navigation }) => {
               overlay={true}
               height={300}
               dataSource={[
-                { title: "Location 2024", url: detail.x.NewUrl },
-                { title: "Location 2014", url: detail.x.OldUrl },
                 {
-                  title: "Total trees detected",
-                  url: detail.x.NewProcessedUrl,
+                  title: "Current location (demo image)",
+                  url: demoAnalysisImage("currentLocation", detail.x.NewUrl),
                 },
                 {
-                  title: "Total trees detected",
-                  url: detail.x.OldProcessedUrl,
+                  title: "Historical location (demo image)",
+                  url: demoAnalysisImage("historicalLocation", detail.x.OldUrl),
+                },
+                {
+                  title: "Current tree-detection view (illustrative)",
+                  url: demoAnalysisImage("currentDetection", detail.x.NewProcessedUrl),
+                },
+                {
+                  title: "Historical tree-detection view (illustrative)",
+                  url: demoAnalysisImage("historicalDetection", detail.x.OldProcessedUrl),
                 },
               ]}
             />

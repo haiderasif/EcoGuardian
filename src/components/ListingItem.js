@@ -10,6 +10,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import colors from "../styles/colors";
 import AppText from "./AppText";
+import { demoProfileImage } from "../config/demoImages";
 
 function ListItem({
   title,
@@ -23,7 +24,9 @@ function ListItem({
     <TouchableHighlight onPress={onPress}>
       <View style={styles.container}>
         {IconComponent}
-        {image && <Image style={styles.image} source={{ uri: image }} />}
+        {image && (
+          <Image style={styles.image} source={{ uri: demoProfileImage(image) }} />
+        )}
         <View style={styles.detailsContainer}>
           <AppText style={styles.title}>{title}</AppText>
           {subTitle && <AppText style={styles.subTitle}>{subTitle}</AppText>}

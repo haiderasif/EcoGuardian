@@ -16,7 +16,7 @@ export const MapInput = ({ notifyChange }) => {
         notifyChange(details.geometry.location);
       }}
       query={{
-        key: "AIzaSyBy9zj9lPNOZWZHenVb3uf1S1NHXgzdrJk",
+        key: process.env.EXPO_PUBLIC_GOOGLE_PLACES_API_KEY,
         language: "en",
       }}
       nearbyPlacesAPI="GooglePlacesSearch"

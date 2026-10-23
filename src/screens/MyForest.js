@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import { Canvas } from "@react-three/fiber/native";
 import Garden from "../components/Garden";
-import useControls from "r3f-native-orbitcontrols";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { FirebaseContext } from "../services/FirebaseData";
 import { getDatabase, ref, onValue, update } from "firebase/database";
@@ -17,7 +16,6 @@ import { getAuth } from "firebase/auth";
 
 const { width } = Dimensions.get("window");
 export const MyForest = () => {
-  const [OrbitControls, event] = useControls();
   const { GetTreesPlanted, treesPlanted } = useContext(FirebaseContext);
   const [stats, setStats] = useState({
     treeCount: 0,
@@ -85,9 +83,8 @@ export const MyForest = () => {
             </Text>
           </View>
         </View>
-        <View style={styles.modelContainer} {...event}>
+        <View style={styles.modelContainer}>
           <Canvas>
-            <OrbitControls enablePan={false} />
             <directionalLight position={[1, 0, 0]} args={["white", 1]} />
             <directionalLight position={[-1, 0, 0]} args={["white", 0.5]} />
             <directionalLight position={[0, 1, 0]} args={["white", 0.5]} />

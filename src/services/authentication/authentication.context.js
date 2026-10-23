@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import firebaseApp, { firebaseAuth } from "../firebase";
 import { Alert } from "react-native";
 import {
   signInWithEmailAndPassword,
@@ -23,7 +24,7 @@ export const AuthenticationContextProvider = ({ children }) => {
 
   const onLogin = (email, password) => {
     setIsLoading(true);
-    const auth = getAuth();
+    const auth = firebaseAuth;
     signInWithEmailAndPassword(auth, email, password)
       .then((u) => {
         setError(false);
@@ -43,7 +44,7 @@ export const AuthenticationContextProvider = ({ children }) => {
   const forgetPassord = (email) => {
     setError(false);
     setIsLoading(true);
-    const auth = getAuth();
+    const auth = firebaseAuth;
     sendPasswordResetEmail(auth, email, null)
       .then(() => {
         alert("reset email sent to " + email);
@@ -55,7 +56,7 @@ export const AuthenticationContextProvider = ({ children }) => {
       });
   };
   const onRegister = (email, password, name, images) => {
-    const auth = getAuth();
+    const auth = firebaseAuth;
     createUserWithEmailAndPassword(auth, email, password)
       .then((u) => {
         updateProfile(u.user, {
@@ -69,7 +70,7 @@ export const AuthenticationContextProvider = ({ children }) => {
           .catch((e) => {
             console.log(e);
           });
-        const db = getDatabase();
+        const db = getDatabase(firebaseApp);
         const reference = ref(db, "User/");
         push(reference, {
           Name: name,

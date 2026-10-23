@@ -7,6 +7,7 @@ import {
   Text,
 } from "react-native";
 import colors from "../styles/colors";
+import { demoListingImage } from "../config/demoImages";
 
 function Card({
   startDate,
@@ -20,7 +21,7 @@ function Card({
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.card}>
-        <Image source={{ uri: image }} style={styles.image} />
+        <Image source={{ uri: demoListingImage(image) }} style={styles.image} />
         <View style={styles.detailContainer}>
           <Text style={styles.title}>{title}</Text>
           <Text>Location: {subTitle}</Text>

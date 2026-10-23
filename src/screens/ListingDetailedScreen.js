@@ -19,6 +19,7 @@ import {
   remove,
 } from "firebase/database";
 import { getAuth } from "firebase/auth";
+import { demoListingImage } from "../config/demoImages";
 import ListItem from "../components/LisingItem";
 import AppButton from "../components/AppButton";
 import { useIsFocused } from "@react-navigation/native";
@@ -127,7 +128,10 @@ function ListingDetailsScreen({ route, navigation }) {
   return (
     <ScrollView>
       <View>
-        <Image style={styles.image} source={{ uri: listing.imageUrl }} />
+        <Image
+          style={styles.image}
+          source={{ uri: demoListingImage(listing.imageUrl) }}
+        />
         <View style={styles.detailContainer}>
           <Text style={styles.title}>{listing.title}</Text>
           <Text style={styles.loc}>Location: {listing.LocationName}</Text>

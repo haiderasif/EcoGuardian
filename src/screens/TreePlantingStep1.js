@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Text, Modal, TouchableOpacity } from "react-native";
-import { Video } from "expo-av";
+import { useVideoPlayer, VideoView } from "expo-video";
 import { Button } from "react-native-paper";
 import digHoleVideo from "../../assets/dig_hole.mp4";
 
 export const TreePlantingStep1 = ({ navigation }) => {
+  const player = useVideoPlayer(digHoleVideo, (videoPlayer) => {
+    videoPlayer.volume = 1;
+  });
   const [modalVisible, setModalVisible] = useState(true);
   const handleContinue = () => {
     setModalVisible(false);
@@ -56,12 +59,11 @@ export const TreePlantingStep1 = ({ navigation }) => {
             </View>
           </View>
         </Modal>
-        <Video
-          source={digHoleVideo} // Ensure source is an object with uri
+        <VideoView
+          player={player}
           style={styles.video} // Style for the video component
-          useNativeControls // To show default video controls
-          resizeMode="contain" // Optional: to maintain aspect ratio
-          volume={1.0} // Set volume to maximum
+          nativeControls // To show default video controls
+          contentFit="contain" // Optional: to maintain aspect ratio
         />
         <Text style={styles.text}>
           This is the first part of tree plantation process. The video above
