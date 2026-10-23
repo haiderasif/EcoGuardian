@@ -33,7 +33,7 @@ The app also includes a **community feed**, public/private location-based campai
   </tr>
   <tr>
     <td><img src="public/login.png" alt="EcoGuardian welcome and authentication screen" width="190" /></td>
-    <td><img src="public/home%281%29.png" alt="EcoGuardian map with environmental markers" width="190" /></td>
+    <td><img src="public/home.png" alt="EcoGuardian map with environmental markers" width="190" /></td>
     <td><img src="public/campaigns.png" alt="EcoGuardian environmental news feed" width="190" /></td>
     <td><img src="public/add%20links.png" alt="EcoGuardian campaign creation form" width="190" /></td>
   </tr>
